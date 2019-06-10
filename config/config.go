@@ -11,6 +11,7 @@ var(
     TcpServerTimeout int64
     TcpConnectTimeout int64
     TcpCmdTimeout int64
+    TcpAliveTimeout int64
     TcpBufSize int
 )
 
@@ -22,6 +23,7 @@ func RUN(){
     log.Printf("tcp restart timout %ds", TcpServerTimeout)
     log.Printf("tcp connect timout %ds", TcpConnectTimeout)
     log.Printf("tcp send cmd timout %ds", TcpCmdTimeout)
+    log.Printf("tcp client alive timout %ds", TcpAliveTimeout)
     log.Printf("tcp buff size %d byte", TcpBufSize)
 }
 
@@ -33,5 +35,6 @@ func init(){
     flag.Int64Var(&TcpConnectTimeout, "C", 30, "tcp connect timeout default(30)s")
     flag.IntVar(&TcpBufSize, "B", 1024, "tcp Buf size default(1024)s")
     flag.Int64Var(&TcpCmdTimeout, "M", 10, "tcp send cmd timeout default(10)s")
+    flag.Int64Var(&TcpAliveTimeout, "A", 66, "tcp send cmd timeout default(66)s")
 }
 
