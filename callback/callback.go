@@ -11,23 +11,28 @@ func DtuIsAvalid(dtuid string) bool{
     return true
 }
 
-func UploadDtuMsg(dtuid string, msg string)bool{
+func UploadDtuMsg(dtuid string, data []byte)bool{
 
+    if data[0] == 0xFF{
+        log.Printf("%s keep alive msg\n", dtuid)
+        return true
+    }
+
+    msg := fmt.Sprintf("%X",data)
     log.Printf("upload dtu: %s msg: %s\n", dtuid, msg)
     return true
 
 }
 
 
-func UploadDtuMsgProc(dtuid string, data []byte) bool{
+func UploadDtuMsgHook(dtuid string, data []byte) bool{
 
     if data[0] == 0xFF{
         log.Printf("%s keep alive msg\n", dtuid)
         return true
     }
     if data[5] == 0xC0{
-        msg := fmt.Sprintf("%X",data)
-        UploadDtuMsg(dtuid, msg)
+        UploadDtuMsg(dtuid, data)
         return true
     }
 

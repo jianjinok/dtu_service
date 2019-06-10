@@ -25,11 +25,6 @@ func clientTimeout(timeChan chan string, timeout int64){
     close(timeChan)
 }
 
-func clientUploadMsgProc(dtuid string, data []byte)bool{
-
-    return callback.UploadDtuMsgProc(dtuid, data)
-}
-
 func clientSendRecv(dtuid string, sendChan, recvChan chan []byte, msg string)string{
 
     timeout := make(chan string)
@@ -47,7 +42,7 @@ func clientSendRecv(dtuid string, sendChan, recvChan chan []byte, msg string)str
     for{
         select{
             case data = <- recvChan:
-                if ok := clientUploadMsgProc(dtuid, data); !ok{
+                if ok := callback.UploadDtuMsgHook(dtuid, data); !ok{
                     recvmsg = fmt.Sprintf("%X",data)
                     goto END
                 }
@@ -92,7 +87,7 @@ func clientgo(conn net.Conn, dtuid string, inChan, outChan chan string, ctrlChan
             log.Printf("send dtuid %s msg %s recv msg %s\n", dtuid, msg, recvMsg)
         
         case data := <- recvChan:
-            clientUploadMsgProc(dtuid, data)
+            callback.UploadDtuMsg(dtuid, data)
 
         case _,ok := <- ctrlChan:
             if !ok{
