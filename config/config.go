@@ -29,12 +29,12 @@ func RUN(){
 
 func init(){
 
-    flag.StringVar(&TcpAddr, "T",":3334", "using for tcp server default(:3334)")
-    flag.StringVar(&RestAddr, "R",":3333", "using for rest server default(:3333)")
-    flag.Int64Var(&TcpServerTimeout, "S", 1, "tcp server restart timeout default(1)s")
-    flag.Int64Var(&TcpConnectTimeout, "C", 30, "tcp connect timeout default(30)s")
-    flag.IntVar(&TcpBufSize, "B", 1024, "tcp Buf size default(1024)s")
-    flag.Int64Var(&TcpCmdTimeout, "M", 10, "tcp send cmd timeout default(10)s")
-    flag.Int64Var(&TcpAliveTimeout, "A", 66, "tcp send cmd timeout default(66)s")
+    flag.StringVar(&TcpAddr, "T",":3334", "tcp server addr")
+    flag.StringVar(&RestAddr, "R",":3333", "rest server addr")
+    flag.Int64Var(&TcpServerTimeout, "S", 1, "tcp server restart timeout")
+    flag.Int64Var(&TcpConnectTimeout, "C", 30, "tcp connect timeout")
+    flag.IntVar(&TcpBufSize, "B", 1024, "tcp Buf size")
+    flag.Int64Var(&TcpCmdTimeout, "M", 10, "tcp send cmd timeout")
+    flag.Int64Var(&TcpAliveTimeout, "A", 66, "tcp keep alive timeout")
 }
 
