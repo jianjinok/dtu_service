@@ -5,7 +5,7 @@ import(
     "flag"
 )
 
-const version = "v1.4"
+const version = "v1.9"
 
 var(
     TcpAddr string
