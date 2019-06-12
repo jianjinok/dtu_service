@@ -1,4 +1,6 @@
 send:
+http://dtu.guyuaninfo.com/dtu/execrawcmd
+
 {"id":"868221043547002","msg":"3a0143440a"}
 
 

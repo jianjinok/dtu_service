@@ -2,15 +2,14 @@
 FROM centos:centos7
 
 ADD dtu_service /home/dtu_service
+RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 WORKDIR /home/
 
-EXPOSE 3333
-EXPOSE 3334
+EXPOSE 5550
+EXPOSE 5551
 
+ENTRYPOINT ["/home/dtu_service"]
+CMD ["-M=15"]
 
-CMD "-M=15"
-
-ENTRYPOINT /home/dtu_service
-
-#docker run -tdi -p3333:3333 -p3334:3334  --name="dtu_servicev1.0"  dtu_service:v1.0
+#docker run -tdi -p5550:5550 -p5551:5551  --name="dtu_servicev1.x"  dtu_service:v1.x

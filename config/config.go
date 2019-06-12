@@ -5,6 +5,8 @@ import(
     "flag"
 )
 
+const version = "v1.4"
+
 var(
     TcpAddr string
     RestAddr string
@@ -28,9 +30,9 @@ func RUN(){
 }
 
 func init(){
-
-    flag.StringVar(&TcpAddr, "T",":3334", "tcp server addr")
-    flag.StringVar(&RestAddr, "R",":3333", "rest server addr")
+    log.Printf("dtu service version: %s", version)
+    flag.StringVar(&TcpAddr, "T",":5550", "tcp server addr")
+    flag.StringVar(&RestAddr, "R",":5551", "rest server addr")
     flag.Int64Var(&TcpServerTimeout, "S", 1, "tcp server restart timeout")
     flag.Int64Var(&TcpConnectTimeout, "C", 30, "tcp connect timeout")
     flag.IntVar(&TcpBufSize, "B", 1024, "tcp Buf size")
