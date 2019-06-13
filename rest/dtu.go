@@ -28,7 +28,7 @@ func dtu_execrawcmd(w rest.ResponseWriter, req *rest.Request){
 
     jsonbytes, _ := ioutil.ReadAll(req.Body)
     json.Unmarshal(jsonbytes, &request)
-    log.Println(request)
+    log.Printf("request.Id=%s request=%v json=%s\n",request.Id ,request, jsonbytes)
 
     response.Id = request.Id
     dtuid := fmt.Sprintf("%X",request.Id)
