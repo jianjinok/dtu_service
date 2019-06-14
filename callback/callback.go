@@ -27,11 +27,11 @@ func UploadDtuMsg(dtuid string, data []byte)bool{
 
 func UploadDtuMsgHook(dtuid string, data []byte) bool{
 
-    if data[0] == 0xFF{
+    if len(data) > 1 && data[0] == 0xFF{
         log.Printf("%s keep alive msg\n", dtuid)
         return true
     }
-    if data[5] == 0xC0{
+    if len(data) > 6 && data[5] == 0xC0{
         UploadDtuMsg(dtuid, data)
         return true
     }
