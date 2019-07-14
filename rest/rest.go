@@ -9,6 +9,7 @@ import (
 var routes = [] *rest.Route{
     rest.Post("/dtu/execrawcmd", dtu_execrawcmd),
     rest.Post("/dtu/execclose", dtu_execclose),
+    rest.Post("/service/getonlines", service_getonlines),
 
     rest.Get("/dtu/execcmd", dtu_execcmd),
     rest.Get("/dtu/getstatus", dtu_getstatus),

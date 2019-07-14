@@ -37,6 +37,14 @@ func GetServiceStatus() deviceCtrl{
     return getDtuService()
 }
 
+func GetDtuList() []string{
+    var dtulist []string
+
+    dtulist = getDtuList()
+
+    return dtulist
+}
+
 func RUN(){
 }
 

@@ -82,6 +82,19 @@ func getDtuId(conn net.Conn)(string, bool){
     return "", false
 }
 
+func getDtuList()[]string{
+
+    var list []string
+
+    deviceCtrls.mutex.RLock()
+    for dtuid, _ := range deviceCtrls.dtumap{
+        list = append(list,dtuid)
+    }
+    deviceCtrls.mutex.RUnlock()
+
+    return list
+}
+
 func changeBlockNum(dtuid string, num int){
 
     deviceCtrls.mutex.Lock()
